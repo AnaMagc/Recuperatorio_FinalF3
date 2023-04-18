@@ -1,6 +1,7 @@
 import { useState } from "react";
 
 import "./index.css";
+import Tarjeta from "./Tarjeta";
 
 // CONSIGNAS EN APP:
 // 1- Implementar 2 estados, uno para manejar el tema claro/oscuro del sitio y otro estado que maneje la plataforma favorita seleccionada
@@ -17,22 +18,22 @@ function App() {
 
 
   const handleTema = () => {
-   
+    setTemaOscuro(!temaOscuro);
   };
 
   const handleFavorita = () => {
-  
+    setFavorita(platformName)
   };
 
   return (
     <div id="App" className={temaOscuro ? "dark" : ""}>
       <h1>¡Bienvenidos!</h1>
       <h2>Contanos, ¿cuál es tu plataforma favorita?</h2>
-      { favorita !== "" ? (<h4 className={ favorita === "Twitter" ? "tw" : favorita === "Facebook" ? "fb" : "yt" }> {favorita}</h4>) : ("")}
+      {favorita !== "" ? (<h4 className={favorita === "Twitter" ? "tw" : favorita === "Facebook" ? "fb" : "yt"}> {favorita}</h4>) : ("")}
 
-      {/* 🚩 Implementar acá */}
+      <Tarjeta selectPlatform={handleFavorita} />
 
-      <button>Cambiar tema</button>
+      <button onClick={handleTema}>Cambiar tema</button>
     </div>
   );
 }
