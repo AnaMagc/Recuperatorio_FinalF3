@@ -13,14 +13,16 @@ const SelectPlatform = ({ name, selectItem }) => {
   const handleSelect = () => {
     SelectPlatform(name);
   };
+}
 
-
-  export default function Item(props) {
-    return (
-      <li onClick={handleSelect}>
-        {name}
-      </li>
-    );
+export default function Item(props) {
+  const handleSelect = () => {
+    props.selectItem(props.name);
   };
 
-}
+  return (
+    <li onClick={handleSelect}>
+      {props.name}
+    </li>
+  );
+};
