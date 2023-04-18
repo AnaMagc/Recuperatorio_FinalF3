@@ -1,5 +1,3 @@
-const listadoPlataformas = ["Twitter", "Facebook", "Youtube"];
-
 // CONSIGNAS EN TARJETA:
 // 1- Importar Item
 // 2- Utilizar el listadoPlataformas para renderizar la cantidad de Items acorde al array 🚩
@@ -11,10 +9,25 @@ const listadoPlataformas = ["Twitter", "Facebook", "Youtube"];
 // MÉTODOS: Listado no requiere de métodos.
 // PROPS: Listado recibe el método heredado de App y se lo pasa a cada Item.
 
+import React from "react";
+import Item from "./Item";
+
+const listadoPlataformas = ["Twitter", "Facebook", "Youtube"];
+
 export default function Tarjeta(props) {
+  const handleSelectPlatform = (listadoPlataformas) => {
+    props.selectPlatform(listadoPlataformas);
+  };
+
   return (
     <ul>
-      {/* 🚩 Implementar acá */}
+      {listadoPlataformas.map((platform, index) => (
+        <Item
+          key={index}
+          name={platform}
+          selectPlatform={handleSelectPlatform}
+        />
+      ))}
     </ul>
   );
 }
